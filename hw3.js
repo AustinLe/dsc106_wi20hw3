@@ -21,14 +21,14 @@ function generateEntries() {
 }
 
 
-// localStorage.clear()
+localStorage.clear()
 
 var barChart;
 
 window.onload = function() {
 	var old
 	let saved = JSON.parse(localStorage.getItem('items'))
-	console.log(saved)
+	// console.log(saved)
 	var cols = this.generateEntries()[0].length;
 
 	if(saved == null){
@@ -44,12 +44,12 @@ window.onload = function() {
 		increment++;
 		row = tbody.insertRow();
 		inc1 = document.getElementById('dingDash');
-		// console.log(inc1)
+		
 		topDing = document.getElementById('dingDash').innerHTML;
-		// console.log(topDing)
+	
 		inc2 = document.getElementById('widgetDash');
 		topWidg = document.getElementById('widgetDash').innerHTML;
-		// console.log(topWidg)
+
 
 		for(x = 0; x < old[0].length+1; x++){
 			if(x == cols){
@@ -83,12 +83,12 @@ window.onload = function() {
 	// this.createBar();
 	// this.barChart
 	if(store.barChart.length == 0){
-		// console.log(saved)
+	
 		this.createBar()
-		console.log('hello')
+		// console.log('hello')
 	}
 	else{
-		console.log(arr.slice(-1)[0])
+		// console.log(arr.slice(-1)[0])
 		
 	}
 }
@@ -172,7 +172,7 @@ function update() {
 	this.createPie();
 	// this.barChart;
 	store.barChart.push(this.barChart)
-	console.log(store.barChart)
+
 	// console.log(barChart)
 
 }	
@@ -183,15 +183,14 @@ window.addEventListener('beforeunload', function() {
 	if((recover == null) || (recover.length ==0)){
 			localStorage.setItem('items', JSON.stringify(store.orderHistory));
 			this.localStorage.setItem('items', JSON.stringify(store.barChart));
-			// console.log('fail')
+			
 		}
 		else{
 			storing = recover.concat(store.orderHistory)
 			barStore = recover.concat(store.barChart)
 			localStorage.setItem('items', JSON.stringify(storing));
 			this.localStorage.setItem('items', JSON.stringify(barStore))
-			// console.log('success')
-
+		
 		}
 })
 
@@ -343,7 +342,9 @@ function clicky(){
 	dingVal = document.getElementById('dingus').value;
 	widgeVal = document.getElementById('widget').value;
 	barChart.series[0].addPoint(Number(dingVal))
+	console.log(barChart.series[0].yData)
 	barChart.series[1].addPoint(Number(widgeVal))
+	console.log(barChart.series[1].yData)
 
 	arr = barChart.xAxis[0].categories
 	arr.push(today)

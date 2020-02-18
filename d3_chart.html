@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+        <head>
+            <title>
+                D&W Dashboard
+            </title>
+            <meta charset ="UTF-8"/> 
+            <link 
+            href = "https://fonts.googleapis.com/css?family=Montserrat%7CPaytone+One&display=swap"
+            rel ='stylesheet'/>
+            <link rel='stylesheet' type = 'text/css' href = 'index_css.css'>
+            <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+            <script src = 'hw3d3.js'></script> 
+            
+            <script src="https://d3js.org/d3.v4.js"></script>
+            <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+        </head>
+
+        <!-- Logo & Name -->
+        <body>
+            <main>
+            <h1>
+                <img src = '/images/dw-logo.png' alt = 'Dingus & Widget Logo' 
+                width = '150' height = '80'>Global Dashboard
+            </h1>
+
+            <!-- Top section  -->
+            <div class = 'flex-container'>
+                <div>
+                    <h3>
+                        Dingus 
+                    </h3>
+                    <div class = 'zeros' id = 'dingDash'>
+                        0
+                    </div>
+                </div>
+                <div>
+                    <h3>
+                        Widget  
+                    </h3>
+                    <div class = 'zeros' id = 'widgetDash'>
+                        0
+                    </div>
+                </div>
+                <div>
+                    <h3>
+                        Sales  
+                    </h3>
+                    <div id="sign">$ <span class="zeros" id="totalDash">0.00 </span>  </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            <!-- Graphs and such -->
+            <div class = 'flex-container'>
+    
+                <div>
+                    <figure id="bar" class="chartItem">
+                        <figcaption class="chart-caption">Proportion of Dingus and Widget per Day</figcaption>
+                        <svg width="100%" height="100%" role="img" viewBox="-70 -100 1000 800" id="bar-chart"></svg>
+                    </figure>
+                </div>
+
+                
+               
+                <div id="my_dataviz">
+                </div>
+
+            </div>
+
+            <hr>
+    
+
+            <!-- Table goes here -->
+            <div id = 'myDynamicTable'></div>
+            
+            <TABLE style = 'width:90%'  class = tables>
+                <caption >
+                    Order History
+                </caption>
+                <colgroup>
+                    <col span = '5'>
+                </colgroup>
+                
+                <thead>
+                    <TR>
+                        <TH rowspan = '2' class = 'gray_cols'>
+                            <b>ID#</b>
+                        </TH>
+                        <TH rowspan= '2'>
+                            <b>Date</b>
+                        </TH>
+                        <TH colspan = '2'>
+                            <b>Quantity</b>
+                        </TH>
+                        <TH rowspan = '2'>
+                            <b>Total</b>
+                        </TH>
+                    </TR>
+                    <tr>
+                        <th><b>Dingus</b></th>
+                        <th><b>Widget</b></th>
+                    </tr>
+                </thead>
+                <tbody id = 'newData'>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan = '5' class = 'gray_cols'>2020 D&W Worldwide</td>
+                    </tr>
+                </tfoot>
+            </TABLE>
+            <!-- Bottom order form section -->
+            
+            <details>
+                <summary>Order Form</summary>
+                <!-- <dialog open>
+                    <p id = 'message'></p>
+                    <script>
+                        document.getElementById('message').innerHTML = 'This section will work only after HW2!';
+                    </script>
+                </dialog> -->
+                <hr>
+                
+                <form class = 'pure-form'>
+                    <fieldset>
+                        <div>
+                            <label>Dingus</label>
+                            <input id = 'dingus' type = 'number' value = 0  min = 0 onkeyup = 'inputVals()'> @ <input type = 'text' value = 14.25 disabled>
+                            = $<input type = 'text' value = 0.00  id = 'dingusTot' disabled>
+                        </div>
+                        <br>
+
+                        <div>
+                            <label>Widget</label>
+                            <input id = 'widget' type = 'number' value = 0  min = 0 onkeyup= 'inputVals()'> @ <input type = 'text' value = 9.99 disabled>
+                            = $<input type = 'text' value = 0.00 id = 'widgetTot' disabled> 
+                        </div>
+                        <br>
+
+                        <div>
+                            <label>Total $</label>
+                            <input id = 'total' type = 'text' value = 0.00 disabled>
+                        </div>
+                        <br>
+
+                        <button class = 'button-error' id = 'cancelBut' type = 'button' onclick= 'cancel()'>Cancel</button>
+                        <button class= 'button-success' id = 'orderBut' type = 'button' onclick = 'update()'>Order</button>
+                        
+                        <!-- <input type = 'button' value = 'Cancel'>
+                        <input type = 'button' value = 'Order'> -->
+                    </fieldset>   
+                </form>
+            </details>
+            </main>
+        </body>
+    
+</html>
